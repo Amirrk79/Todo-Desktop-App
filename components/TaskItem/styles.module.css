@@ -1,0 +1,26 @@
+.main {
+    width: 100%;
+    border-bottom: 2px solid #ebebeb;
+    height: 100px;
+}
+
+.taskTitle {
+    font-size: 25px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.taskDescription {
+    font-size: 16px;
+    word-wrap:break-word;
+    width: 100%;
+    padding: 5px;
+}
+.taskTag {
+    font-size: 25px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
