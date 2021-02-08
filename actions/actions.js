@@ -1,2 +1,5 @@
 export const ADDTASK = 'ADDTASK'
 export const DELETETASK = 'DELETETASK'
+export const SET_UNSET_SCORED = 'SET_UNSET_SCORED'
+export const SET_UNSET_COMPLATED = 'SET_UNSET_COMPLATED'
+export const EDIT_TASK = 'EDIT_TASK'

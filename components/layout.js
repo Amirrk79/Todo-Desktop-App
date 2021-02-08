@@ -69,7 +69,7 @@ function Layout({
         time: new Date()
     })
 
-    console.log(todoData.time)
+    
     const [theme , setTheme ] = useState(
         {
             textColor: 'black' ,
@@ -254,7 +254,6 @@ function Layout({
             ...todoData ,
             [e.target.name]: e.target.value
         })   
-        console.log(todoData)
     }
     const handleChangeTodoTime = (date) => {
         setTodoData({

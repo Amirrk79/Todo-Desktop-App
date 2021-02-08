@@ -3,9 +3,10 @@ import { useStore } from '../store'
 import '../styles/global.css'
 
 
-
+ 
 
 function MyApp({ Component, pageProps }) {
+  
   const store = useStore(pageProps.initialReduxState)
 
   return (
