@@ -9,6 +9,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import DoneIcon from '@material-ui/icons/Done';
 import SetOnSetCompleted from '../../actions/set_unset_completed'
+import setUnsetScored from '../../actions/set_unset_scored'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import EditIcon from '@material-ui/icons/Edit'
+import StarBorderIcon from '@material-ui/icons/StarBorder'
+import StarIcon from '@material-ui/icons/Star'
 
 
 
@@ -18,6 +23,9 @@ function TaskItem({task}) {
     const [checked , setChecked] = useState({
         checkbox: task.completed
     })
+    const [scored , setScored] = useState({
+        checkbox: task.scored
+    })
     const time = new Date(task.time);
     const dispatch = useDispatch()
 
@@ -26,7 +34,7 @@ function TaskItem({task}) {
     } 
     ,[])
 
-    const handleCheckboxChange = () => {
+    const handleCompletedCheckboxChange = () => {
         dispatch(SetOnSetCompleted(
             {
                 id: task.id
@@ -36,6 +44,14 @@ function TaskItem({task}) {
             checkbox: !checked.checkbox
         })
         
+    }
+    const handleImportantCheckboxCheck = () => {
+        dispatch(setUnsetScored({
+            id: task.id
+        }))
+        setScored({
+            checkbox: !scored.checkbox
+        })
     }
     return(
         <div className={styles.main}>
@@ -50,7 +66,7 @@ function TaskItem({task}) {
                     checkedIcon={
                     <DoneIcon style={{color: 'green'}} />} name="checkedH" />
                     }
-                    onChange={handleCheckboxChange}
+                    onChange={handleCompletedCheckboxChange}
                      />
                     {task.title}
                     </div>
@@ -69,7 +85,24 @@ function TaskItem({task}) {
                     </div>
                 </Col>
                 <Col span={3} xl={3} sm={3} lg={3} xs={3}>
-                
+                <div className={styles.btns}>
+                    <div>
+                    <DeleteForeverIcon className={styles.iconBtn} style={{color: 'red'}} />
+                    </div>
+                    <div>
+                    <EditIcon className={styles.iconBtn} style={{color: 'lawngreen'}} />
+                    </div>
+                    <FormControlLabel
+                    checked={scored.checkbox}
+                        control={
+                        <Checkbox icon={<StarBorderIcon style={{color: '#ebebeb'}} />
+                    } 
+                    checkedIcon={
+                    <StarIcon style={{color: 'yellow'}} />} name="checkedH" />
+                    }
+                    onChange={handleImportantCheckboxCheck}
+                     />
+                </div>
                 </Col>
             </Row>
         </div>

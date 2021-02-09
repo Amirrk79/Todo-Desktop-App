@@ -22,9 +22,14 @@ const reducer = (state = initialState, action) => {
       }
       case actions.SET_UNSET_COMPLATED: {
         let index = state.tasks.findIndex(task => task.id === action.payload.id);
-        console.log(index)
         let newState = {...state}
         newState.tasks[index].completed = !newState.tasks[index].completed;
+        return newState
+      }
+      case actions.SET_UNSET_SCORED: {
+        let index = state.tasks.findIndex(task => task.id === action.payload.id);
+        let newState = {...state}
+        newState.tasks[index].scored = !newState.tasks[index].scored;
         return newState
       }
       case actions.DELETETASK: {
