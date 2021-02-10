@@ -25,13 +25,9 @@ import {
     KeyboardTimePicker,
   } from '@material-ui/pickers'
 import AddTask from '../actions/addTaskAction'
-import { Input } from 'antd'
 
 
 
-
-
-const { TextArea } = Input;
   
 
 
@@ -261,6 +257,15 @@ function Layout({
             time: date
         })
     }
+    const handleCancelTask = () => {
+        setTodoData({
+        title: '' ,
+        description: '' ,
+        tag: '' , 
+        time: new Date()
+        })
+        setAddTask(false)
+    }
    
 
 
@@ -443,8 +448,13 @@ function Layout({
                                     }}
                                     />
                                     </MuiPickersUtilsProvider>
+                                    <div className={styles.modifyBtns}>
                                     <div onClick={handleSubmitTask} className={styles.addTask}>
                                         Add
+                                    </div>
+                                    <div onClick={handleCancelTask} className={styles.addTask}>
+                                        Cancel
+                                    </div>
                                     </div>
                                 </div>
                                 :

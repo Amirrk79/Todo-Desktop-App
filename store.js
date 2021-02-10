@@ -32,8 +32,16 @@ const reducer = (state = initialState, action) => {
         newState.tasks[index].scored = !newState.tasks[index].scored;
         return newState
       }
+      case actions.EDIT_TASK: {
+        let index = state.tasks.findIndex(task => task.id === action.payload.id);
+        let newState = {...state}
+        newState.tasks[index] = action.payload;
+        return newState
+      }
       case actions.DELETETASK: {
-          break
+          let newState = {...state}
+          newState.tasks = newState.tasks.filter((task) => task.id != action.payload.id )
+          return newState
       }
       default: {
           return state
